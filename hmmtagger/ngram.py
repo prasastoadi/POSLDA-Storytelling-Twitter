@@ -24,7 +24,7 @@ def readWordTagFreq(reader, tagNumbers):
         lineParts = re.split("\\s+", line.strip())
         word = lineParts[0]
         wordTagFreq[word] = {};
-        for i in xrange(1, len(lineParts), 2):
+        for i in range(1, len(lineParts), 2):
             wordTagFreq[word][tagNumbers[lineParts[i]]] = int(lineParts[i + 1])
 
     return WordFreq(wordTagFreq)

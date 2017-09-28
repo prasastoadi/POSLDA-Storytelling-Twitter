@@ -71,7 +71,7 @@ def sentence_extraction(line):
     pre = []
     for l in sent:
         s = l.strip()
-        #print s
+        # print s
         if len(s)==0: continue
         tmp += s.strip()
         if (s[-1] in "?!.") or (len(s)==1 and s[0] in "?!."):
@@ -99,4 +99,4 @@ if __name__=='__main__':
     l = 'response.content_type . acdef . '
     out = sentence_extraction(cleaning(l))
     for o in out:
-        print " ".join(tokenisasi_kalimat(o))
+        print(" ".join(tokenisasi_kalimat(o)))

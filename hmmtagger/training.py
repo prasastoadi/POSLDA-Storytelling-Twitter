@@ -48,7 +48,7 @@ class CorpusReaderSatu(AbsCorpusReader):
             sentence = copy(self.startMarkers)
             # String[]
             lineParts = re.split("\\s+", line)
-            for i in xrange(0, len(lineParts)): 
+            for i in range(0, len(lineParts)): 
                 # String
                 wordTag = lineParts[i]
                 # int
@@ -100,7 +100,7 @@ class TrainHandler:
         Parameters:
             sentence: List<TaggedWord>
         """
-        for i in xrange(0, len(sentence)): 
+        for i in range(0, len(sentence)): 
             self.addLexiconEntry(sentence[i])
             self.addUniGram(sentence, i)
             if i > 0: 
