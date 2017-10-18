@@ -1,4 +1,5 @@
 from collections import Counter
+from collections import defaultdict
 import random
 
 class LdaModel:
@@ -113,12 +114,31 @@ class LdaModel:
                 if count > 0: print (k, word, count)
 
     def print_topics2(self):
-        topic_names = ["Topik a: ",
-                       "Topik b: ",
-                       "Topik c: ",
-                       "Topik d: "]
+        topic_names = ["Topik 0: ",
+                       "Topik 1: ",
+                       "Topik 2: ",
+                       "Topik 3: "]
         for document, topic_counts in zip(self.documents, self.document_topic_counts):
             print(document)
             for topic, count, in topic_counts.most_common():
                 if count > 0:
                     print(topic_names[topic], count)
+
+    def insert_into_Ccon(self, Ccon, doc_tup):
+        """
+            print word and what topic are their
+        """
+        for k, word_counts in enumerate(self.topic_word_counts):
+
+            Ccon["topic "+str(k)] = defaultdict(list)
+            for word, count in word_counts.most_common():
+                # if count > 0: print ("topic", k, word, count)
+                if count > 0:
+                    for doc in doc_tup:
+                        for w in doc:
+                            if word == w[0]:
+                                Ccon["topic "+str(k)][w[1]].append(word)
+        for key in Ccon:
+            for k in Ccon[key]:
+                Ccon[key][k] = list(set(Ccon[key][k]))
+        print(Ccon)
